@@ -525,13 +525,9 @@ tar xpf vpsmx.tar --directory /etc/VPS-MX
 chmod 775 /etc/VPS-MX
 chmod 775 /etc/VPS-MX/*
 
-cat << eof > /bin/menu
-/etc/VPS-MX/menu
-eof
-chmod +x /bin/menu
-ln -s /bin/menu /bin/vpsmx
-ln -s /bin/vpsmx /bin/VPSMX
-
-
-
+[[ -s /etc/VPS-MX/menu ]] && {
+	rm /bin/menu &> /dev/null
+	echo "cd /etc/VPS-MX && bash menu" > /bin/menu
+	chmod +rwx /bin/menu
+}
 

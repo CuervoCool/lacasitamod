@@ -1,8 +1,8 @@
 #!/bin/bash
 declare -A sfile=( [usr]="/etc/VPS-MX/info.user" [instal]="/etc/casitainstal" )
-declare -A sruta
-			       sruta=(
-   [0]="/etc/VPS-MX" [fonts]="//usr/share/figlet" [usr]="/etc/VPS-MX/controlador"
+declare -A sdir
+			       sdir=(
+   [0]="/etc/VPS-MX" [fonts]="/usr/share/figlet" [usr]="/etc/VPS-MX/controlador"
 			             )
 
 
@@ -153,7 +153,11 @@ eof
 
 	rm -rf $HOME/instal $HOME/files.tar
 
-	for extras in `echo "
+	for extras in `curl -sSL https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/extras` ; do
+		wget -O ${sdir[usr]}/$extras https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/$extras &> /dev/null
+		chmod +rwx ${sdir[usr]}/$extras
+	done
+
 }
 
 install_inicial

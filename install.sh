@@ -171,6 +171,11 @@ eof
 	chmod 775 $menu
 	done
 
+	wget -O /etc/VPS-MX/menu https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/menu &> /dev/null
+	chmod +rwx /etc/VPS-MX/menu
+
+	echo 'es' > ${sdir[0]}/idioma
+
 }
 
 install_inicial

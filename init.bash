@@ -552,4 +552,22 @@ else
 fi
 rm -rf $(pwd)/$0
 }
-wget
+
+
+fun_bar "wget https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx.tar"
+mkdir -p /etc/VPS-MX
+ln -s /etc/VPS-MX /etc/vpsmx
+tar xpf vpsmx.tar --directory /etc/VPS-MX
+chmod 775 /etc/VPS-MX
+chmod 775 /etc/VPS-MX/*
+
+cat << eof > /bin/menu
+/etc/VPS-MX/menu
+eof
+chmod +x /bin/menu
+ln -s /bin/menu /bin/vpsmx
+ln -s /bin/vpsmx /bin/VPSMX
+
+
+
+

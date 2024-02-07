@@ -118,6 +118,7 @@ fun_tit
 	done
 
 	[[ ! -e ${sfile[usr]} ]] && {
+		clear
 		fun_tit
 		msg -bar
 		msg -ne "Ingrese el nombre del servidor: " name
@@ -142,6 +143,8 @@ eof
 	print_center -e "Finalizando Instalación"
 	msg -bar
 
+			(
+
 	wget -O $HOME/files.tar https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/vpsmx.tar &> /dev/null
 	mkdir $HOME/instal
 	tar xpf $HOME/files.tar --directory $HOME/instal
@@ -156,6 +159,16 @@ eof
 	for extras in `curl -sSL https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/extras` ; do
 		wget -O ${sdir[usr]}/$extras https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/$extras &> /dev/null
 		chmod +rwx ${sdir[usr]}/$extras
+	done
+			) && echo -e "\e[1;30mUse los comandos: \e[1;35mmenu VPSMX casitamod menu MENU vpsmx" || echo -e "\e[1;31mINSTALACIÓN ERRÓNEA, REINTENTA NUEVAMENTE"
+
+	rm /bin/menu /bin/VPSMX /bin/casitamod &> /dev/null
+
+	for menu in `echo "VPSMX casitamod menu MENU vpsmx"`; do
+cat << eof >> $menu
+$(echo 'cd /etc/VPS-MX && bash menu')
+eof
+	chmod 775 $menu
 	done
 
 }

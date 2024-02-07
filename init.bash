@@ -1,8 +1,10 @@
 #!/bin/bash
 source <(curl -sSL https://raw.githubusercontent.com/NetVPS/LATAM_Oficial/main/Ejecutables/colores)
 dpkg --configure -a
-apt-get install lolcat pv -y &> /dev/null
 
+	for inst in `echo "lolcat toilet figlet pv jq"`; do
+		apt-get install $inst &> /dev/null
+	done
 
 dependencias() {
   dpkg --configure -a >/dev/null 2>&1
@@ -31,10 +33,6 @@ msg() {
     "-bar2" | "-bar") cor="${MORADO}————————————————————————————————————————————————————" && echo -e "${SEMCOR}${cor}${SEMCOR}" ;;
     esac
 }
-
-apt-get install toilet -y &> /dev/null
-apt-get install jq &> /dev/null
-apt-get install figlet &> /dev/null
 
 wget https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/ansi.flf &> /dev/null
 wget https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/future.tlf &> /dev/null

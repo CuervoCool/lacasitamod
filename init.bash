@@ -32,6 +32,10 @@ msg() {
     esac
 }
 
+apt-get install toilet -y &> /dev/null
+apt-get install jq &> /dev/null
+apt-get install figlet &> /dev/null
+
 msg -bar
 dependencias
 msg -bar

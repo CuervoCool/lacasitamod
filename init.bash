@@ -359,41 +359,8 @@ mkdir /etc/VPS-MX/v2ray
     [[ ! -d ${SCPusr} ]] && mkdir ${SCPusr}
     [[ ! -d ${SCPfrm} ]] && mkdir ${SCPfrm}
     [[ ! -d ${SCPinst} ]] && mkdir ${SCPinst}
-    case $1 in
-    "menu") ARQ="${SCPdir}/" ;; #Menu
-    "usercodes") ARQ="${SCPusr}/" ;; #Panel SSRR
-    "ADMbot.sh") ARQ="${SCPfrm}/" ;;
-    "protocolos.sh"|"herramientas.sh") ARQ="${SCPdir}/"
-    "PDirect.py" | "PPub.py" | "PPriv.py" | "POpen.py" | "PGet.py") ARQ="${SCPinst}/" ;; #Instalacao
-    #"apacheon.sh") ARQ="${SCPfrm}/" ;;
-    #"tcp.sh") ARQ="${SCPfrm}/" ;;
-    #"fai2ban.sh") ARQ="${SCPfrm}/" ;;
-    #"blockBT.sh") ARQ="${SCPfrm}/" ;;
-    #"ultrahost") ARQ="${SCPfrm}/" ;;
-    #"speed.py") ARQ="${SCPfrm}/" ;;
-    #"squidpass.sh") ARQ="${SCPfrm}/" ;;
-    #"C-SSR.sh") ARQ="${SCPinst}/" ;; #Panel SSR
-    #"extras.sh") ARQ="${SCPinst}/" ;; #Panel SSR
-    #"UDPcustom.sh") ARQ="${SCPinst}/" ;; #Instalacao
-    #"UDPserver.sh") ARQ="${SCPinst}/" ;; #Instalacao
-    #"wireguard.sh") ARQ="${SCPinst}/" ;; #Instalacao
-    #"psiphon-manage") ARQ="${SCPinst}/" ;; #Instalacao
-    #"openssh.sh") ARQ="${SCPinst}/" ;; #OpenVPN
-    #"squid.sh") ARQ="${SCPinst}/" ;; #Squid
-    #"dropbear.sh" | "proxy.sh") ARQ="${SCPinst}/" ;; #Instalacao
-    #"proxy.sh") ARQ="${SCPinst}/" ;; #Instalacao
-    #"openvpn.sh") ARQ="${SCPinst}/" ;; #Instalacao
-    #"ssl.sh" | "python.py") ARQ="${SCPinst}/" ;; #Instalacao
-    #"shadowsocks.sh") ARQ="${SCPinst}/" ;; #Instalacao
-    #"Shadowsocks-libev.sh") ARQ="${SCPinst}/" ;; #Instalacao
-    #"Shadowsocks-R.sh") ARQ="${SCPinst}/" ;; #Instalacao
-    #"v2ray.sh" | "slowdns.sh") ARQ="${SCPinst}/" ;; #Instalacao
-    #"budp.sh") ARQ="${SCPinst}/" ;; #Instalacao
-    *) ARQ="${SCPfrm}/" ;; #Herramientas
-    esac
-    mv -f ${SCPinstal}/$1 ${ARQ}/$1
-    chmod +x ${ARQ}/$1
 }
+
 NOTIFY() {
     clear
     clear
@@ -452,9 +419,6 @@ msg -bar2
 msg -ama "     [ SCRIPT \033[1;97m  MOD LACASITAMX\033[1;33m ]"
 msg -ama "  \033[1;96m      🔰Usar Ubuntu 20 a 64 De Preferencia🔰 "
 msg -bar2
-[[ $1 = "" ]] && funcao_idioma || {
-    [[ ${#1} -gt 2 ]] && funcao_idioma || id="$1"
-}
 error_fun() {
     msg -bar2 && msg -verm "ERROR entre VPS<-->GENERADOR (Port 81 TCP)" && msg -bar2
     [[ -d ${SCPinstal} ]] && rm -rf ${SCPinstal}

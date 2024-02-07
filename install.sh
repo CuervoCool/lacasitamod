@@ -89,7 +89,7 @@ install_inicial(){
 		        service apache2 restart > /dev/null 2>&1 &
 	}
 
-
+clear
 fun_tit
 	[[ ! -e ${sfile[instal]} ]] && {
 		msg -bar
@@ -114,8 +114,46 @@ fun_tit
 	mkdir -p /etc/VPS-MX/{controlador,tmp,data/}
 
 	for font in ${fuentes[@]}; do
-		wget -O /usr/share/figlet/$font 
+		wget -O /usr/share/figlet/$font https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/otros/$font &> /dev/null
+	done
 
+	[[ ! -e ${sfile[usr]} ]] && {
+		fun_tit
+		msg -bar
+		msg -ne "Ingrese el nombre del servidor: " name
+		[[ -z $name ]] && name="vps-user"
+		msg -bar
+		msg -ne "Ingrese un alias/usuario que servirá como reseller: " ress
+		[[ -z $ress ]] && ress="$HOSTNAME"
+		msg -bar
+		cat << eof > ${sfile[usr]}
+$(wget -qO- ifconfig.me)
+$(echo $name)
+$(echo $ress)
+eof
+		chmod +rwx ${sfile[usr]}
+		ln -s ${sfile[usr]} ${sdir[0]}/data/info.user
+	} || {
+		return 0
+	}
+
+	clear && fun_tit
+	msg -bar
+	print_center -e "Finalizando Instalación"
+	msg -bar
+
+	wget -O $HOME/files.tar https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/vpsmx.tar &> /dev/null
+	mkdir $HOME/instal
+	tar xpf $HOME/files.tar --directory $HOME/instal
+
+	for arqx in `echo "menu protocolos.sh herramientas.sh"`; do
+		chmod +rwx $HOME/instal/$arqx
+		mv $HOME/instal/$arqx ${sdir[0]}/$arqx
+	done
+
+	rm -rf $HOME/instal $HOME/files.tar
+
+	for extras in `echo "
 }
 
 install_inicial

@@ -37,6 +37,7 @@ apt-get install jq &> /dev/null
 apt-get install figlet &> /dev/null
 
 wget https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/ansi.flf &> /dev/null
+wget https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/future.tlf &> /dev/null
 
 msg -bar
 dependencias

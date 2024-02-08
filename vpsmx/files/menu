@@ -14,13 +14,7 @@ test "`uname -m`" != 'armv7l'
 declare -A sfile=( [usr]="${sdir[0]}/info.user" [idioma]="${sdir[0]}/idioma" [puertos]="${sdir[0]}/puertos.user" [inst]="${sdir[0]}/protocolos.sh" [frm]="${sdir[0]}/herramientas.sh" )
 declare -A cor=( [0]="\033[1;37m" [1]="\033[1;34m" [2]="\033[1;31m" [3]="\033[1;33m" [4]="\033[1;32m" )
 
-msg(){
-case $1 in
- -ama)echo -e "\e[1;33m$2\e[0m";;
- -ne)echo -ne "\e[1;31m$2\e[0m";;
- -bar)echo -e "\e[1;31m===========================================================";;
-esac
-}
+source ${sdir[0]}/colores
 
 [[ ! -e ${sfile[usr]} ]] && {
 	msg -bar && msg -ne "ingrese un resseller: ";read ressn

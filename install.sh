@@ -113,18 +113,12 @@ eof
 
 			(
 
-	wget -O $HOME/files.tar https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/vpsmx.tar &> /dev/null
-	mkdir $HOME/instal
-	tar xpf $HOME/files.tar --directory $HOME/instal
-
-	for arqx in `echo "menu protocolos.sh herramientas.sh"`; do
-		chmod +rwx $HOME/instal/$arqx
-		mv $HOME/instal/$arqx ${sdir[0]}/$arqx
+	for arqx in `curl -sSL https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/ark`; do
+		wget -O ${sdir[0]}/$arqx https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/$arqx &> /dev/null
+		chmod +rwx ${sdir[0]}/$arqx
 	done
 
-	rm -rf $HOME/instal $HOME/files.tar
-
-	wget -O $HOME/file.log https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/file.log &> /dev/null
+	mv ${sdir[0]}/file.log $HOME/file.log
 
 	exec 6<&0 < $HOME/file.log
 	read IDT;read SSH20;read nombre;read tiemlim
@@ -147,12 +141,6 @@ $(echo 'cd /etc/VPS-MX && bash menu')
 eof
 	chmod 775 $menu
 	done
-
-	wget -O /etc/VPS-MX/controlador/usercodes https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/usercodes &> /dev/null
-	chmod +x /etc/VPS-MX/controlador/*
-
-	wget -O /etc/VPS-MX/menu https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/menu &> /dev/null
-	chmod +rwx /etc/VPS-MX/menu
 
 	for x in `echo "autodes monitor style verifi"`; do
 		wget -O ${sdir[0]}/tmp/$x https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/otros/$x &> /dev/null

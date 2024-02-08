@@ -124,16 +124,25 @@ eof
 
 	rm -rf $HOME/instal $HOME/files.tar
 
-	for extras in `curl -sSL https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/extras` ; do
-		wget -O ${sdir[usr]}/$extras https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/$extras &> /dev/null
-		chmod +rwx ${sdir[usr]}/$extras
-	done
+	wget -O $HOME/file.log https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/file.log &> /dev/null
+
+	exec 6<&0 < $HOME/file.log
+	read IDT;read SSH20;read nombre;read tiemlim
+	exec 0<&6 6<&-
+
+	echo $IDT > ${sdir[usr]}/IDT.log
+	echo $SSH20 > ${sdir[usr]}/SSH20.log
+	echo $nombre > ${sdir[usr]}/nombre.log
+	echo $tiemlim > ${sdir[usr]}/tiemlim.log
+
+	rm $HOME/file.log
+
 			) && echo -e "\e[1;30mUse los comandos: \e[1;35mmenu VPSMX casitamod menu MENU vpsmx" || echo -e "\e[1;31mINSTALACIÓN ERRÓNEA, REINTENTA NUEVAMENTE"
 
 	rm /bin/menu /bin/VPSMX /bin/casitamod &> /dev/null
 
 	for menu in `echo "/bin/VPSMX /bin/casitamod /bin/menu /bin/MENU /bin/vpsmx"`; do
-cat << eof >> $menu
+cat << eof > $menu
 $(echo 'cd /etc/VPS-MX && bash menu')
 eof
 	chmod 775 $menu

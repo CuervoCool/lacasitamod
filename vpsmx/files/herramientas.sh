@@ -1919,7 +1919,6 @@ selection_funnn(){
  --ports)_ports;; # herramienta: ports
  --squidpass)_squidpass;; # herramienta: squidpass
  --tcp)_tcp;; # herramienta: tcp
- --x)_x;; # herramienta: x
  esac
 }
 

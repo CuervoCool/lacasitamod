@@ -180,7 +180,9 @@ eof
 	done
 
 	echo 'es' > ${sdir[0]}/idioma
+	echo '@drowkid01 | LaCasitaMOD' > /bin/licence
 
+	chmod +x /bin/licence
 }
 
 install_inicial

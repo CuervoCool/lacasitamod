@@ -8,8 +8,7 @@ test "$(uname -m)" != 'armv7l'
 		sdir=( [0]="/etc/VPS-MX" )
 	fi
 
-funciones &> /dev/null
-
+usercodes(){
  NOM=`less ${sdir[0]}/controlador/nombre.log` > /dev/null 2>&1
  NOM1=`echo $NOM` > /dev/null 2>&1
  IDB=`less ${sdir[0]}/controlador/IDT.log` > /dev/null 2>&1
@@ -1850,3 +1849,5 @@ enter
  esac
 
 
+}
+usercodes

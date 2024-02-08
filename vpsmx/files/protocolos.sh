@@ -4588,11 +4588,11 @@ remove_fun() {
         sed -i '/PDirect.py/d' $prefix/autostart
     }
     sleep 1
-    screen -wipe >/dev/null
+    screen -wipe >/dev/null &> /dev/null
     systemctl stop python.PD &>/dev/null
     systemctl disable python.PD &>/dev/null
     rm $prefix/systemd/system/python.PD.service &>/dev/null
-    exit 0
+    iniciarsocks
 }
 iniciarsocks() {
     pidproxy=$(ps x | grep -w "PPub.py" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy ]] && P1="\033[1;32m[ON]" || P1="\e[37m[\033[1;31mOFF\e[37m]"
@@ -4604,7 +4604,7 @@ iniciarsocks() {
     pidproxy6=$(ps x | grep "scktcheck" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy6 ]] && P6="\033[1;32m[ON]" || P6="\e[37m[\033[1;31mOFF\e[37m]"
     pidproxy7=$(ps x | grep "python.py" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy7 ]] && P7="\033[1;32m[ON]" || P7="\e[37m[\033[1;31mOFF\e[37m]"
     pidproxy8=$(ps x | grep "python.py" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy8 ]] && P8="\033[1;32m[ON]" || P8="\e[37m[\033[1;31mOFF\e[37m]"
-
+    fun_tit --sockspy
     echo -e "   	\e[91m\e[43mINSTALADOR DE PROXY'S\e[0m "
     msg -bar
     echo -e " \e[1;93m[\e[92m1\e[93m] \e[97m$(msg -verm2 "➛ ")\033[1;97mProxy Python SIMPLE      $P1"

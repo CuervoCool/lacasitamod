@@ -8248,9 +8248,6 @@ iniciarsocks
  --squid)_squid&&menu3;; # protocolo: squid
  #--ssl)_ssl&&menu3;; # protocolo: ssl
  --ssl)
-clear
-clear
-
 SCPdir="/etc/VPS-MX"
 tmp="/etc/VPS-MX/crt" #&& [[ ! -d ${tmp} ]] && mkdir ${tmp}
 tmp_crt="/etc/VPS-MX/crt/certificados" && [[ ! -d ${tmp_crt} ]] && mkdir -p ${tmp_crt} &> /dev/null

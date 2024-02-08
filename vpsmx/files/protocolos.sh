@@ -7435,14 +7435,9 @@ fi
  #--sockspy)_sockspy&&menu3;; # protocolo: sockspy
  --sockspy)
 #!/bin/bash
-ll="/usr/local/include/snaps" && [[ ! -d ${ll} ]] && exit
-
-#
-clear
-clear
 SCPdir="/etc/VPS-MX"
-SCPfrm="${SCPdir}/herramientas" && [[ ! -d ${SCPfrm} ]] && exit
-SCPinst="${SCPdir}/protocolos" && [[ ! -d ${SCPinst} ]] && exit
+SCPfrm="${SCPdir}/herramientas" #&& [[ ! -d ${SCPfrm} ]] && exit
+SCPinst="${SCPdir}/protocolos" #&& [[ ! -d ${SCPinst} ]] && exit
 
 declare -A cor=([0]="\033[1;37m" [1]="\033[1;34m" [2]="\033[1;31m" [3]="\033[1;33m" [4]="\033[1;32m")
 [[ $(dpkg --get-selections | grep -w "python" | head -1) ]] || apt-get install python -y &>/dev/null
@@ -7486,7 +7481,6 @@ tcpbypass_fun() {
     [[ $portxz = "" ]] && portxz="8080"
     screen -dmS sokz scktcheck "$portxz" "$msg" >/dev/null 2>&1
 }
-l="/usr/local/lib/sped" && [[ ! -d ${l} ]] && exit
 gettunel_fun() {
     echo "master=NetVPS" >${SCPinst}/pwd.pwd
     while read service; do
@@ -7540,10 +7534,6 @@ sistema22() {
 
 PythonDic_fun() {
 
-    clear
-    echo ""
-    echo ""
-    msg -tit
     msg -bar
     echo -e "\033[1;31m  SOCKS DIRECTO-PY | CUSTOM\033[0m"
     while true; do
@@ -8154,7 +8144,7 @@ iniciarsocks() {
     pidproxy8=$(ps x | grep "python.py" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy8 ]] && P8="\033[1;32m[ON]" || P8="\e[37m[\033[1;31mOFF\e[37m]"
 
     #msg -bar
-
+    fun_tit --sockspy
     echo -e "   	\e[91m\e[43mINSTALADOR DE PROXY'S\e[0m "
     msg -bar
     echo -e " \e[1;93m[\e[92m1\e[93m] \e[97m$(msg -verm2 "➛ ")\033[1;97mProxy Python SIMPLE      $P1"

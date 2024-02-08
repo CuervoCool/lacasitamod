@@ -56,44 +56,12 @@ install_inicial(){
 		  done <<< $(echo -e "$text")
 	}
 
-	dependencias(){
-		source <(curl -sSL https://raw.githubusercontent.com/rudi9999/Herramientas/main/module/module)
-	        for i in $soft; do
-	                leng="${#i}"
-	                puntos=$(( 21 - $leng))
-	                pts="."
-	                for (( a = 0; a < $puntos; a++ )); do
-	                        pts+="."
-	                done
-	                msg -nazu "       instalando $i$(msg -ama "$pts")"
-	                if apt install $i -y &>/dev/null ; then
-	                        msg -verd "INSTALL"
-	                else
-	                        msg -verm2 "FAIL"
-	                        sleep 2
-        	                tput cuu1 && tput dl1
-	                        print_center -ama "aplicando fix a $i"
-	                        dpkg --configure -a &>/dev/null
-	                        sleep 2
-	                        tput cuu1 && tput dl1
-		                msg -nazu "       instalando $i$(msg -ama "$pts")"
-	                        if apt install $i -y &>/dev/null ; then
-	                                msg -verd "INSTALL"
-        	                else
-        	                        msg -verm2 "FAIL"
-	                        fi
-	                fi
-	        done
-		        sed -i "s;Listen 80;Listen 81;g" /etc/apache2/ports.conf
-		        service apache2 restart > /dev/null 2>&1 &
-	}
-
 clear
 fun_tit
 	[[ ! -e ${sfile[instal]} ]] && {
 		msg -bar
 		print_center -ama "INICIANDO INSTALACIÓN DE PAQUETES"
-		dependencias
+		source <(curl -sSL https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/soft)
 		msg -bar
 		touch ${sfile[instal]}
 	} || {

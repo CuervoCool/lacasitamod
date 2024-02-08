@@ -164,3 +164,4 @@ eof
 }
 
 install_inicial
+rm $(pwd)/$0

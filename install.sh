@@ -8,12 +8,10 @@ declare -A sdir
 
 fuentes=("ansi.flf" "future.tlf")
 
+echo -e "\e[1;32m INICIANDO INSTALACIÓN.."
+
 		(
 dpkg --configure -a
-
-for update in `echo 'update upgrade autoremove clean'`; do
-	apt-get $update -y &> /dev/null
-done
 
 for init in `printf "lolcat toilet figlet pv jq\n"`; do
 	apt-get install $init -y &> /dev/null

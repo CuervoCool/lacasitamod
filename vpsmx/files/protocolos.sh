@@ -4594,6 +4594,7 @@ remove_fun() {
     rm $prefix/systemd/system/python.PD.service &>/dev/null
     iniciarsocks
 }
+
 iniciarsocks() {
     pidproxy=$(ps x | grep -w "PPub.py" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy ]] && P1="\033[1;32m[ON]" || P1="\e[37m[\033[1;31mOFF\e[37m]"
     pidproxy2=$(ps x | grep -w "PPriv.py" | grep -v "grep" | awk -F "pts" '{print $1}') && [[ ! -z $pidproxy2 ]] && P2="\033[1;32m[ON]" || P2="\e[37m[\033[1;31mOFF\e[37m]"
@@ -8243,7 +8244,7 @@ iniciarsocks() {
     msg -bar
 }
 iniciarsocks
-
+;;
  --squid)_squid&&menu3;; # protocolo: squid
  #--ssl)_ssl&&menu3;; # protocolo: ssl
  --ssl)

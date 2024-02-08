@@ -4,7 +4,7 @@ test "`uname -m`" != 'armv7l'
 
         [[ $? != '1' ]] && {
                 prefix="/etc"
-                sdir=( [0]="/etc/VPS-MX" )
+                sdir=( [0]="/etc/VPS-MX" [inst]="/etc/VPS-MX/protocolos" )
         } || {
                 prefix="$PREFIX/etc"
                 sdir=( [0]="$prefix/vpsmx" [py]="$prefix/vpsmx/filespy" [inst]="$prefix/vpsmx/protocolos" [usr]="$prefix/vpsmx/controlador"  [instal]="$prefix/vpsmx/instal" [frm]="$prefix/vpsmx/herramientas" )

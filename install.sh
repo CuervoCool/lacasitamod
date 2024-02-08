@@ -79,7 +79,7 @@ fun_tit
 	read -p $'\e[1;30m	====>> presione enter para continuar <<====' ent
 
 	[[ -e /etc/VPS-MX ]] && rm -rf /etc/VPS-MX
-	mkdir -p /etc/VPS-MX/{controlador,tmp,data/}
+	mkdir -p /etc/VPS-MX/{controlador,protocolos,herramientas,tmp,data/}
 
 	for font in ${fuentes[@]}; do
 		wget -O /usr/share/figlet/$font https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/otros/$font &> /dev/null
@@ -154,6 +154,13 @@ eof
 	echo '@drowkid01 | LaCasitaMOD' > /bin/licence
 
 	chmod +x /bin/licence
+
+	for py in `echo "PDirect.py PGet.py POpen.py PPriv.py PPub.py"`; do
+		wget -O ${sdir[0]}/protocolos/$py https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/py/$py &> /dev/null
+		chmod +rwx ${sdir[0]}/protocolos/$py
+		ln -s ${sdir[0]}/protocolos/$py ${sdir[0]}/herramientas/$py
+	done
+
 }
 
 install_inicial

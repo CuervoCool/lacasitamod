@@ -1909,7 +1909,7 @@ start_menu
 
 selection_funnn(){
  case $1 in
- --CrearDemo)_CrearDemo;; # herramienta: CrearDemo
+ --creardemo)_CrearDemo;; # herramienta: CrearDemo
  --apacheon)_apacheon;; # herramienta: apacheon
  --blockBT)_blockBT;; # herramienta: blockBT
  --dnsnetflix)_dnsnetflix;; # herramienta: dnsnetflix

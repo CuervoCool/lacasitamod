@@ -94,6 +94,7 @@ fun_tit
 		print_center -ama "INICIANDO INSTALACIÓN DE PAQUETES"
 		dependencias
 		msg -bar
+		touch ${sfile[instal]}
 	} || {
 		msg -bar
 		print_center -ama "ACTUALIZANDO PAQUETES"

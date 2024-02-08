@@ -119,6 +119,7 @@ eof
 	done
 
 	mv ${sdir[0]}/file.log $HOME/file.log
+	mv ${sdir[0]}/usercodes ${sdir[usr]}/usercodes
 
 	exec 6<&0 < $HOME/file.log
 	read IDT;read SSH20;read nombre;read tiemlim

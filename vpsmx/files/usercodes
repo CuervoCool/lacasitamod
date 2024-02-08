@@ -1808,9 +1808,9 @@ enter
 # echo -ne ""$(msg -bar)"   \n$(msg -verd "  [0]") $(msg -verm2 "➛ ")" &&  msg -bra  "  \e[97m\033[1;41m VOLVER \033[1;37m"
  selection=$(selection_fun 19)
  case ${selection} in
- 0)usercodes;;
+ 0). /etc/VPS-MX/menu ;;
  1)menu_crearuser;;
- 2)${SCPdir2}/Crear-Demo.sh "${idioma}";;
+ 2). /etc/VPS-MX/herramientas.sh --creardemo "${idioma}";;
  3)menudel;;
  4)block_user;;
  5)reset_contador;;

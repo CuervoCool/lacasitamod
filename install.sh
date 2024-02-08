@@ -164,7 +164,7 @@ eof
 
 	rm /bin/menu /bin/VPSMX /bin/casitamod &> /dev/null
 
-	for menu in `echo "VPSMX casitamod menu MENU vpsmx"`; do
+	for menu in `echo "/bin/VPSMX /bin/casitamod /bin/menu /bin/MENU /bin/vpsmx"`; do
 cat << eof >> $menu
 $(echo 'cd /etc/VPS-MX && bash menu')
 eof

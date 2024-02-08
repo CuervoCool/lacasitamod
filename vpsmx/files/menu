@@ -118,6 +118,12 @@ volver(){
 	msg -bar
 }
 
+enter(){
+volver
+}
+
+export -f volver enter
+
 mportas(){
 unset portas
 portas_var=$(lsof -V -i tcp -P -n | grep -v "ESTABLISHED" |grep -v "COMMAND" | grep "LISTEN")

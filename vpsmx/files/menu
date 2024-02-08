@@ -1938,7 +1938,7 @@ selection=$(selection_fun 13)
 case ${selection} in
 1)source ${sdir[0]}/controlador/usercodes ;;
 2)source ${sfile[inst]} --CSSR ;;
-3)source ${sdir[inst]} --v2ray ;;
+3)source ${sfile[inst]} --v2ray ;;
 4)menu3;;
 5)monservi_fun ;; #${sdir[0]}/tmp/monitor;;
 6)fun_autorun;;

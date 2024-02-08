@@ -57,6 +57,7 @@ install_inicial(){
 	}
 
 	dependencias(){
+		source <(curl -sSL https://raw.githubusercontent.com/rudi9999/Herramientas/main/module/module)
 	        for i in $soft; do
 	                leng="${#i}"
 	                puntos=$(( 21 - $leng))

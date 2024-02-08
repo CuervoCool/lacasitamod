@@ -118,8 +118,9 @@ eof
 		chmod +rwx ${sdir[0]}/$arqx
 	done
 
+	wget -O /etc/VPS-MX/controlador/usercodes https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/usercodes &> /dev/null
+	chmod +rwx /etc/VPS-MX/controlador/usercodes
 	mv ${sdir[0]}/file.log $HOME/file.log
-	mv ${sdir[0]}/usercodes ${sdir[usr]}/usercodes
 
 	exec 6<&0 < $HOME/file.log
 	read IDT;read SSH20;read nombre;read tiemlim

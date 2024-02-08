@@ -1,11 +1,11 @@
 #!/bin/bash
-declare -A sfile=( [usr]="/etc/VPS-MX/info.user" [instal]="/etc/casitainstal" )
+declare -A sfile
 declare -A sdir
 			       sdir=(
    [0]="/etc/VPS-MX" [fonts]="/usr/share/figlet" [usr]="/etc/VPS-MX/controlador"
 			             )
 
-
+sfile=( [usr]="/etc/VPS-MX/info.user" [instal]="/etc/casitainstal" )
 fuentes=("ansi.flf" "future.tlf")
 
 echo -e "\e[1;32m INICIANDO INSTALACIÓN.."

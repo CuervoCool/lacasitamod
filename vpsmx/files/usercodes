@@ -8,7 +8,6 @@ test "$(uname -m)" != 'armv7l'
 		sdir=( [0]="/etc/VPS-MX" )
 	fi
 
-source ${sdir[0]}/colores
 funciones &> /dev/null
 
 function usercodes(clear)

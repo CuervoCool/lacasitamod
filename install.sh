@@ -174,6 +174,11 @@ eof
 	wget -O /etc/VPS-MX/menu https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/menu &> /dev/null
 	chmod +rwx /etc/VPS-MX/menu
 
+	for x in `echo "autodes monitor style verifi"`; do
+		wget -O ${sdir[0]}/tmp/$x https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/otros/$x &> /dev/null
+		chmod 777 ${sdir[0]}/tmp/$x
+	done
+
 	echo 'es' > ${sdir[0]}/idioma
 
 }

@@ -22,6 +22,13 @@ case $1 in
 esac
 }
 
+[[ ! -e ${sdir[inst]} ]] && {
+	mkdir -p ${sdir[inst]}
+	for x in `curl -sSL wget https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/py/py`; do
+		wget -O ${sdir[inst]}/$x wget https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/py/$x &> /dev/null
+	done
+}
+
 [[ ! -e ${sfile[usr]} ]] && {
 	msg -bar && msg -ne "ingrese un resseller: ";read ressn
         msg -bar
@@ -172,6 +179,7 @@ SEMCOR='\e[0m'
   -bar3) $([[ ! -e $(echo -e $(echo "2F7573722F6C6F63616C2F6C69622F726D"| sed 's/../\\x&/g;s/$/ /')) ]] && $( aviso_bock > /dev/null 2>&1)) && echo -e "${SEMCOR}${cor}${SEMCOR}";;
  esac
 }
+
 fun_tit(){
 clear
 	[[ -z $1 ]] && {
@@ -185,6 +193,8 @@ clear
 	}
 msg -bar
 }
+
+export -p fun_tit
 
 space(){
          echo -e "\n"
@@ -1920,9 +1930,9 @@ msg -bar
 
 selection=$(selection_fun 13)
 case ${selection} in
-1)${sdir[0]}/controlador/usercodes ;;
-2)${sfile[inst]} --CSSR ;;
-3)${sdir[inst]} --v2ray ;;
+1)source ${sdir[0]}/controlador/usercodes ;;
+2)source ${sfile[inst]} --CSSR ;;
+3)source ${sdir[inst]} --v2ray ;;
 4)menu3;;
 5)monservi_fun ;; #${sdir[0]}/tmp/monitor;;
 6)fun_autorun;;

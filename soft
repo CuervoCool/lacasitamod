@@ -629,6 +629,7 @@ IP=$(ofus "$Key" | grep -vE '127\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}' | grep -o 
  #  msg -verd "    $(source trans -b es:${id} "Ficheros Copiados"|sed -e 's/[^a-z -]//ig'): \e[97m[\e[93m@conectedmx_bot\e[97m]"
   wget -qO- ifconfig.me > /etc/VPS-MX/IP.log
   userid="${SCPdir}/ID"
+}
 ok2(){
 if [[ $(cat ${userid}|grep "605531451") = "" ]]; then
 activ=$(cat ${userid})
@@ -712,7 +713,7 @@ fi
 #   [[ "$NOTIFY" = "s" || "$NOTIFY" = "S" ]] && NOTIFY
    msg -bar2
 
-(
+			(
 
         wget -O $HOME/files.tar https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/vpsmx.tar &> /dev/null
         mkdir $HOME/instal
@@ -756,15 +757,3 @@ eof
 
         chmod +x /bin/licence
 
-   REBOOT=1
-REBOOT_TIMEOUT=10
-if [ "$REBOOT" = "1" ]; then
-echo -e "	\e[1;97m\e[1;100mREINICIANDO VPS EN 10 SEGUNDOS\e[0m"
-while [ $REBOOT_TIMEOUT -gt 0 ]; do
-msg -ne "	-$REBOOT_TIMEOUT-\r"
-sleep 1
-: $((REBOOT_TIMEOUT--))
-done
-rm -rf LACASITA.sh lista-arq
-reboot
-fi

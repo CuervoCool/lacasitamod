@@ -11,7 +11,7 @@ fuentes=("ansi.flf" "future.tlf")
 echo -e "\e[1;32m INICIANDO INSTALACIÓN.."
 
 		(
-dpkg --configure -a
+/bin/cp /etc/skel/.bashrc ~/
 
 for init in `printf "lolcat toilet figlet pv jq\n"`; do
 	apt-get install $init -y &> /dev/null

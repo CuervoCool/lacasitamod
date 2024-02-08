@@ -171,6 +171,9 @@ eof
 	chmod 775 $menu
 	done
 
+	wget -O /etc/VPS-MX/controlador/usercodes https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/usercodes &> /dev/null
+	chmod +x /etc/VPS-MX/controlador/*
+
 	wget -O /etc/VPS-MX/menu https://raw.githubusercontent.com/CuervoCool/lacasitamod/main/vpsmx/files/menu &> /dev/null
 	chmod +rwx /etc/VPS-MX/menu
 

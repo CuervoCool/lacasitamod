@@ -1094,7 +1094,7 @@ kakzh='{
 }'
 			[[ $opx != @("4"|"26"|"27"|"28") ]] && {
 				xd=$(echo $kakzh|jq -r .selection_user.v$opx)
-				fun_tit --$xd
+				#fun_tit --$xd
 				source ${sfile[inst]} --$xd
 			} || {
 				jjska=$(jq '{v4: "v2ray", v26: "bot", v27: "udp", v28: "websokat" }' -n|jq -r .v$opx)
